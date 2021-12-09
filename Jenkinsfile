@@ -1,3 +1,3 @@
-@Library('pmd@csvwlib-integration') _
+@Library('pmd@csvwlib-build') _
 
 buildcsvw {}
