@@ -1,0 +1,28 @@
+{
+    "$schema": "http://gss-cogs.github.io/family-schemas/dataset-schema-1.1.0.json",
+    "transform": {
+        "columns": {
+            "year": {
+                "type": "dimension"
+            },
+            "industry_code_anzsic06": {
+                "type": "dimension"
+            },
+            "industry_code_nzsioc": {
+                "type": "dimension"
+            },
+            "variable_name": {
+                "type": "dimension"
+            },
+            "value": {
+                "type": "observations",
+                "measure": {
+                  "label": "Individual Average Income"
+                },
+                "unit": {
+                    "label": "Nomland Pounds"
+                }
+            }
+        }
+    }
+}
