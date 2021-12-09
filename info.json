@@ -1,6 +1,16 @@
 {
     "$schema": "http://gss-cogs.github.io/family-schemas/dataset-schema-1.1.0.json",
+    "title": "Annual enterprise survey: 2020 financial year",
+    "id": "annual-enterprise-survey",
+    "publisher": "Office for National Statistics",
+    "families": [
+        "new-family"
+    ],
+    "landingPage": "http://landing-page-uri",
+    "description": "Some random dataset",
+    "published": "2010-01-01T00:00:00Z",
     "transform": {
+        "airtable": "recVDI0VC5iKZCd2r",
         "columns": {
             "year": {
                 "type": "dimension"
