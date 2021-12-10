@@ -12,5 +12,6 @@ tidy_df = df[['year', 'industry_code_anzsic06', 'industry_code_nzsioc', 'variabl
 tidy_df["industry_code_anzsic06"] = tidy_df["industry_code_anzsic06"].apply(lambda x: x.lower())
 tidy_df["industry_code_nzsioc"] = tidy_df["industry_code_nzsioc"].apply(lambda x: x.lower())
 tidy_df["variable_name"] = tidy_df["variable_name"].apply(lambda x: x.lower())
+tidy_df["value"] = tidy_df["value"].apply(lambda x: x.replace(",", ""))
 
 tidy_df.head(62).to_csv("observations.csv", index=False)
