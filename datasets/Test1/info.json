@@ -13,25 +13,34 @@
         "airtable": "recVDI0VC5iKZCd2r",
         "columns": {
             "year": {
-                "type": "dimension"
+                "type": "dimension",
+                "new": {
+                    "label": "Year",
+                    "codelist": true
+                }
             },
             "industry_code_anzsic06": {
-                "type": "dimension"
+                "type": "dimension",
+                "new": {
+                    "label": "Industry Code ANZIC06",
+                    "codelist": true
+                }
             },
             "industry_code_nzsioc": {
-                "type": "dimension"
+                "type": "dimension",
+                "new": {
+                    "label": "Industry Code NZSIOC",
+                    "codelist": true
+                }
             },
             "variable_name": {
-                "type": "dimension"
+                "type": "measures"
+            },
+            "units": {
+                "type": "units"
             },
             "value": {
-                "type": "observations",
-                "measure": {
-                  "label": "Individual Average Income"
-                },
-                "unit": {
-                    "label": "Nomland Pounds"
-                }
+                "type": "observations"
             }
         }
     }
