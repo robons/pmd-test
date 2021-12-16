@@ -88,7 +88,7 @@ def right(s,amount):
     return s[-amount:]
 def date_time(date):
     if len(date) == 5:
-        return 'year/' + left(date, 4)
+        return left(date, 4)
 df['Year'] = df['Year'].astype(str).replace('\.', '', regex=True)
 df['Year'] = df['Year'].apply(date_time)
 
