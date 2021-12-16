@@ -92,7 +92,17 @@ def date_time(date):
 df['Year'] = df['Year'].astype(str).replace('\.', '', regex=True)
 df['Year'] = df['Year'].apply(date_time)
 
+df['Marker'] = df['Marker'].map(lambda m: None if m == 'unavailable' else m)
+df['Employee Count'] = df['Employee Count'].map(lambda ec: None if ec == 'n/a' else ec)
+
 df = df.rename(columns={'Flow Directions': "Flow", "Business Size": "Number of Employees", "Age": "Age of Business"})
+df['Age of Business'] = df['Age of Business'].map(pathify)
+df['Country'] = df['Country'].map(pathify)
+df['Zone'] = df['Zone'].map(pathify)
+df['Industry Group'] = df['Industry Group'].map(pathify)
+df['Number of Employees'] = df['Number of Employees'].map(pathify)
+
+
 df['Flow'] = df['Flow'].map(pathify)
 df['Flow'].loc[(df['Flow'] == 'import')] = 'imports'
 df['Flow'].loc[(df['Flow'] == 'export')] = 'exports'
