@@ -1,0 +1,76 @@
+{
+    "$schema": "http://gss-cogs.github.io/family-schemas/dataset-schema-1.1.0.json",
+    "title":"UK Trade in Goods Statistics by Business Characteristics",
+    "id": "HMRC",
+    "published":"24-11-2021",
+    "description": "Supporting tables for the UK trade in goods by business characteristics",
+    "landingPage": "https://www.gov.uk/government/statistical-data-sets/uk-trade-in-goods-by-business-characteristics-2020-data-tables",
+    "publisher":"HM Revenue & Customs",
+    "families":[
+        "Trade"
+    ],
+    "transform":{
+        "airtable": "recVDI0VC5iKZCd2r",
+        "columns":{
+            "Flow":{
+                "type":"dimension",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/flow-directions",
+                "value":"http://gss-data.org.uk/def/trade/concept/flow-directions/{+flow}"
+            },
+            "Country":{
+                "type":"dimension",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/cl-area",
+                "value":"http://gss-data.org.uk/def/concept-scheme/cl-area/{+country}"
+            },
+            "Zone":{
+                "type":"dimension",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/cl-area",
+                "value":"http://gss-data.org.uk/def/concept-scheme/cl-area/{+zone}"
+            },
+            "Number of Employees":{
+                "type":"dimension",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/employment-size-band",
+                "value":"http://gss-data.org.uk/def/trade/concept/employment-size-band/{+number_of_employees}"
+            },
+            "Age of Business":{
+                "type":"dimension",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/age-of-business",
+                "value":"http://gss-data.org.uk/def/trade/concept-scheme/age-of-business/{+age_of_business}"
+            },
+            "Employee Count": {
+                "type":"attribute",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/employee-count",
+                "value":"http://gss-data.org.uk/def/trade/concept-scheme/employee-count/{+employee_count}"
+            },
+            "Business Count": {
+                "type":"attribute",
+                "uri":"http://gss-data.org.uk/def/trade/property/dimension/employee-count",
+                "value":"http://gss-data.org.uk/def/trade/concept-scheme/employee-count/{+business_count}"
+            },
+            "Year": {
+                "type":"dimension",
+                "new": {
+                    "subPropertyOf": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+                    "codelist": true
+                },
+                "value": "http://reference.data.gov.uk/id/year/{+year}"
+            },
+            "Marker":{
+                "type":"attribute",
+                "uri":"http://purl.org/linked-data/sdmx/2009/attribute#obsStatus",
+                "value":"http://gss-data.org.uk/def/concept/cogs-markers/{+marker}"
+            },
+            "Value":{
+                "type": "observations",
+                "measure":{
+                    "label":"something_measure"
+                },
+                "unit":{
+                    "label":"GBP"
+                }
+            } 
+        }  
+    },
+    "sizingNotes": "Non-simple file structure but with multiple table within tabs, multiple dimensions, subdimensions and footnotes.",
+    "notes": "Supporting information is available in the PDF on the lading page .  This is an annual publication and a decision is yet to be taken on how this should be recorded i.e. each publication overwritten by the newest, each publication published seperately, a timeseries created etc."
+}
