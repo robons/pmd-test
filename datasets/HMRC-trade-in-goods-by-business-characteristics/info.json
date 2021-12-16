@@ -36,7 +36,7 @@
             "Number of Employees":{
                 "type":"dimension",
                 "uri":"http://gss-data.org.uk/def/trade/property/dimension/employment-size-band",
-                "value":"http://gss-data.org.uk/def/trade/concept/employment-size-band/{+number_of_employees}"
+                "value":"http://gss-data.org.uk/def/trade/concept/employment-size-bands/{+number_of_employees}"
             },
             "Age of Business":{
                 "type":"dimension",
