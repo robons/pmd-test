@@ -38,16 +38,10 @@
                 "value":"http://gss-data.org.uk/def/trade/concept-scheme/age-of-business/{+age_of_business}"
             },
             "Employee Count": {
-                "type":"attribute",
-                "new": {
-                    "literalValuesDataType": "integer"
-                }
+                "type":"attribute"
             },
             "Business Count": {
-                "type":"attribute",
-                "new": {
-                    "literalValuesDataType": "integer"
-                }
+                "type":"attribute"
             },
             "Year": {
                 "type":"dimension",
