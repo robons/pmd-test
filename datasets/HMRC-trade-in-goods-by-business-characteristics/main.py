@@ -106,4 +106,4 @@ with pd.option_context('float_format', '{:f}'.format):
 
 df.to_csv("observations.csv", index = False)
 catalog_metadata = metadata.as_csvqb_catalog_metadata()
-catalog_metadata.to_json_file('catalog_metadata.json')
+catalog_metadata.to_json_file('catalog-metadata.json')
