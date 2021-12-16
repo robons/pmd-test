@@ -93,7 +93,7 @@ df['Year'] = df['Year'].astype(str).replace('\.', '', regex=True)
 df['Year'] = df['Year'].apply(date_time)
 
 df = df.rename(columns={'Flow Directions': "Flow", "Business Size": "Number of Employees", "Age": "Age of Business"})
-
+df['Flow'] = df['Flow'].map(pathify)
 df['Flow'].loc[(df['Flow'] == 'import')] = 'imports'
 df['Flow'].loc[(df['Flow'] == 'export')] = 'exports'
 df['Value'].loc[(df['Value'] == '')] = 0
