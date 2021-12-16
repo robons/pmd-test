@@ -39,13 +39,15 @@
             },
             "Employee Count": {
                 "type":"attribute",
-                "uri":"http://gss-data.org.uk/def/trade/property/dimension/employee-count",
-                "value":"http://gss-data.org.uk/def/trade/concept-scheme/employee-count/{+employee_count}"
+                "new": {
+                    "literalValuesDataType": "integer"
+                }
             },
             "Business Count": {
                 "type":"attribute",
-                "uri":"http://gss-data.org.uk/def/trade/property/dimension/employee-count",
-                "value":"http://gss-data.org.uk/def/trade/concept-scheme/employee-count/{+business_count}"
+                "new": {
+                    "literalValuesDataType": "integer"
+                }
             },
             "Year": {
                 "type":"dimension",
