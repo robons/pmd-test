@@ -97,8 +97,29 @@ df['Employee Count'] = df['Employee Count'].map(lambda ec: None if ec == 'n/a' e
 
 df = df.rename(columns={'Flow Directions': "Flow", "Business Size": "Number of Employees", "Age": "Age of Business"})
 df['Age of Business'] = df['Age of Business'].map(pathify)
-df['Country'] = df['Country'].map(pathify)
-df['Zone'] = df['Zone'].map(pathify)
+
+cl_area_mappings = pd.read_csv("https://raw.githubusercontent.com/GSS-Cogs/ref_common/pmd4/reference/codelists/cl-area.csv")
+map_cl_area_label_to_notation = { l: n for l, n in zip(list(cl_area_mappings["Label"]), list(cl_area_mappings["Notation"]))}
+
+df = df.drop(df.index[df['Country'] == "Non-EU"])
+df = df.drop(df.index[df['Zone'] == "Non-EU"])
+
+cl_label_match_replacements = {
+    "Hong Kong": "Hong Kong, China",
+    "Russia": "Russian Federation",
+    "South Korea": "Korea, Republic of",
+    "Taiwan": "Taiwan, Province of China",
+    "UAE": "United Arab Emirates",
+    "Vietnam": "Viet Nam",
+    "EU": "EU (Member States and Institutions of the European Union) changing composition",
+    "World": "World (all areas, including reference area, including IO)"
+}
+
+df['Country'] = df['Country'].replace(cl_label_match_replacements)
+df['Country'] = df['Country'].map(lambda c: map_cl_area_label_to_notation[c])
+
+df['Zone'] = df['Zone'].replace(cl_label_match_replacements)
+df['Zone'] = df['Zone'].map(lambda c: map_cl_area_label_to_notation[c])
 df['Industry Group'] = df['Industry Group'].map(pathify)
 df['Number of Employees'] = df['Number of Employees'].map(pathify)
 
