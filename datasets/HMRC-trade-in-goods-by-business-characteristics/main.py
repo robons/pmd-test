@@ -101,8 +101,8 @@ df['Age of Business'] = df['Age of Business'].map(pathify)
 cl_area_mappings = pd.read_csv("https://raw.githubusercontent.com/GSS-Cogs/ref_common/pmd4/reference/codelists/cl-area.csv")
 map_cl_area_label_to_notation = { l: n for l, n in zip(list(cl_area_mappings["Label"]), list(cl_area_mappings["Notation"]))}
 
-df = df.drop(df.index[df['Country'] == "Non-EU"])
-df = df.drop(df.index[df['Zone'] == "Non-EU"])
+df = df.drop(df.index[df['Country'] == "Non-EU"]) # No suitable cl-area to cover this
+df = df.drop(df.index[df['Zone'] == "Non-EU"]) # No suitable cl-area to cover this
 
 cl_label_match_replacements = {
     "Hong Kong": "Hong Kong, China",
@@ -131,6 +131,18 @@ df['Value'].loc[(df['Value'] == '')] = 0
 df['Value'] = df['Value'].astype(int)
 
 
+df = df.melt(id_vars=['Age of Business', 'Number of Employees', 'Country', 'Flow', 'Industry Group', 'Year', 'Zone', 'Marker'], value_vars=['Business Count', 'Employee Count', 'Value'], value_name="Value", var_name="Measure")
+
+df.loc[df["Measure"] != "Value", ['Marker']] = None
+df["Measure"] = df["Measure"].replace({"Value": "Monetary Value"})
+
+df.loc[df["Value"].map(lambda x: x is None or (isinstance(x, str) and x.lower() == "suppressed")) , ['Marker']] = "suppressed"
+df.loc[df["Marker"] == "suppressed", ['Value']] = None
+df["Unit"] = df["Measure"].replace({
+    "Monetary Value": "gbp",
+    "Employee Count": "employees",
+    "Business Count": "businesses"
+})
 
 with pd.option_context('float_format', '{:f}'.format):
     print(df)
